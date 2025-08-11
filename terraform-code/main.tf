@@ -1,40 +1,31 @@
-resource  "github_repository" "backend_repo" {
-  name        = "backend"
-  description = "This is an example backend repository created for Lab"
-  visibility  = "public"
-  auto_init = true
-
-
-topics = ["terraform", "github", "example"]
-
-has_issues     = true
-has_projects   = true
-has_wiki       = true
-allow_squash_merge = true
-
+resource "random_id" "random" {
+    byte_length = 2
+    count = var.repo_count
 }
 
-resource "github_branch" "backend_feature" {
-    repository = github_repository.backend_repo.name
-    branch     = "develop"
-}
-
-resource "github_repository" "frontend_repo" {
-    depends_on = [github_repository.backend_repo]
-    name        = "frontend"
-    description = "This is an example frontend repository created for Lab"
-    visibility  = "public"
+resource "github_repository" "mtc_repo" {
+    count = var.repo_count
+    name  = "mtc-repo-${random_id.random[count.index].dec}"
+    visibility = "private"
     auto_init = true
-
-    topics = ["terraform", "github", "example"]
-
-    has_issues     = true
-    has_projects   = true
-    has_wiki       = true
-    allow_squash_merge = true
+  
+}
+resource "github_repository_file" "readme" {
+    count = var.repo_count
+    repository = github_repository.mtc_repo[count.index].name
+    branch = "main"
+    file = "README.md"
+    content = "This is a README file for mtc-repo-${random_id.random[count.index].dec}"
+    commit_message = "Add README file"
+  
 }
 
-resource "github_branch" "frontend_feature" {
-    repository = github_repository.frontend_repo.name
-    branch     = "develop"
+resource "github_repository_file" "index" {
+    count = var.repo_count
+    repository = github_repository.mtc_repo[count.index].name
+    branch = "main"
+    file = "index.html"
+    content = "<html><body><h1>Welcome to mtc-repo-${random_id.random[count.index].dec}</h1></body></html>"
+    commit_message = "Add index.html file"
+  
 }
