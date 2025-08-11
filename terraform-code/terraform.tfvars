@@ -1,1 +1,1 @@
-repo_count = 2
+auto_init = true
