@@ -1,7 +1,7 @@
 variable "project" {
   description = "Project name"
   type        = string
-  default = "frontend"
+  default     = "frontend"
   validation {
     condition     = contains(["frontend", "infrastructure", "backend"], var.project)
     error_message = "Project must be one of: frontend, infrastructure, backend."
@@ -20,16 +20,16 @@ variable "env" {
 
 variable "repos" {
   type = map(object({
-    lang      = string
-    filename  = string
-    pages     = bool
-    auto_init = optional(bool, true)
+    lang       = string
+    filename   = string
+    pages      = bool
+    auto_init  = optional(bool, true)
     visibility = string
   }))
   description = "Repositories"
 }
 
-  
+
 variable "repo_max" {
   description = "Maximum number of repositories"
   type        = number
@@ -38,5 +38,10 @@ variable "repo_max" {
     condition     = var.repo_max > 0 && var.repo_max <= 10
     error_message = "repo_max must be between 1 and 10."
   }
-  
+
+}
+
+variable "run_provisoners" {
+  type    = bool
+  default = false
 }
