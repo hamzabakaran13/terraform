@@ -5,12 +5,6 @@
         "pages": false,
         "visibility": "public"
     },
-    "frontend": {
-        "filename": "main.js",
-        "lang": "javascript",
-        "pages": false,
-        "visibility": "public"
-    },
     "infra": {
         "filename": "main.tf",
         "lang": "terraform",
