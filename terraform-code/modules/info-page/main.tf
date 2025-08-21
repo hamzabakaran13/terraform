@@ -1,4 +1,4 @@
-data "data terraform_remote_state" "repos" {
+data "data_terraform_remote_state" "repos" {
   backend = "remote"
 
   config {
