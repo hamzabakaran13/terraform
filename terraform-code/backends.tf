@@ -2,13 +2,13 @@
 #  backend "local" {
 #  }
 #}
-terraform { 
-  cloud { 
-    
-    organization = "Terraform-hamza-kurs" 
+terraform {
+  cloud {
 
-    workspaces { 
-      name = "hamza-terraform-kurs" 
-    } 
-  } 
+    organization = "Terraform-hamza-kurs"
+
+    workspaces {
+      name = "hamza-terraform-kurs"
+    }
+  }
 }
