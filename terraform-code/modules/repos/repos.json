@@ -8,7 +8,7 @@
     "infra": {
         "filename": "main.tf",
         "lang": "terraform",
-        "pages": false,
+        "pages": true,
         "visibility": "public"
     }
 }
