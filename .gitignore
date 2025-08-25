@@ -1,5 +1,6 @@
 # Local .terraform directories
 **/.terraform/*
+new-repo-*
 
 # .tfstate files
 *.tfstate
@@ -16,11 +17,11 @@ override.tf.json
 
 # Exclude CLI configuration files
 .terraformrc
-terraform.rc
+erraform.rc
 
 # Sensitive variable files
-*.tfvars
-*.tfvars.json
+#*.tfvars
+#*.tfvars.json
 
 # Plan output files
 *.tfplan
